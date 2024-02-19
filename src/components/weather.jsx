@@ -21,6 +21,7 @@ const Weather = () => {
       let response = await fetch(URL);
       let data = await response.json();
       if(data.cod==="404"){
+        console.log("hii");
         toast.error(data.message)
       }
       console.log(data);
