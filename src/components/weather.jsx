@@ -20,6 +20,9 @@ const Weather = () => {
       let URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
       let response = await fetch(URL);
       let data = await response.json();
+      if(data.cod==="404"){
+        toast.error(data.message)
+      }
       console.log(data);
       setTemperature(Number((data.main.temp - 273.15).toFixed(2)));
       setFeels(Number((data.main.feels_like - 273.15).toFixed(2)));
